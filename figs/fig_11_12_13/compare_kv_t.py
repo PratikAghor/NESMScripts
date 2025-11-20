@@ -39,15 +39,15 @@ markevery, markersize = 10, 10
 
 sim_paths = {
     'nesm_1km': {
-        'kv': '../../NESM_2019_2020/postprocessing_scripts/aghor_AKv/',
+        'kv': './',
         'prefix': 'nesm_2019_2020_'
     },
     'nesm_5km': {
-        'kv': '../../NESM_2019_2020_5km/postprocessing_scripts/aghor_AKv/',
+        'kv': './',
         'prefix': 'nesm_2019_2020_5km_'
     },
     'sm3_1km': {
-        'kv': '../../SM3_2019_2020/postprocessing_scripts/aghor_AKv/',
+        'kv': './',
         'prefix': 'sm3_2019_2020_'
     }
 }
@@ -134,7 +134,7 @@ ax.xaxis.set_major_formatter(mdates.DateFormatter('%b %Y'))
 plt.setp(ax.xaxis.get_majorticklabels(), rotation=30, ha='right', fontsize=48)
 
 plt.tight_layout(rect=[0, 0.05, 1, 1])
-plt.savefig(f"{plots_path}{box}_kv_timeseries_daily_comparison_vlevel_{w_vlevel}.png", dpi=300)
-plt.savefig(f"{plots_path}{box}_kv_timeseries_daily_comparison_vlevel_{w_vlevel}.pdf", dpi=300)
+# plt.savefig(f"{plots_path}{box}_kv_timeseries_daily_comparison_vlevel_{w_vlevel}.png", dpi=300)
+plt.savefig(f"fig_12.pdf", dpi=300)
 
 #-----------------------------------------------------------------------------------------------
