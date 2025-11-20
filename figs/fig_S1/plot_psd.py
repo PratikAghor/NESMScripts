@@ -11,7 +11,6 @@ cases = [
     'sm3_2019_2020'
 ]
 
-# Mapping from case file prefix to plot label
 labels = {
     'nesm_2019_2020': r'NESM (1km)',
     'nesm_2019_2020_5km': r'NESM (5km)',
