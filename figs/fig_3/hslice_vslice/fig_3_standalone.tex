@@ -1,0 +1,46 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\begin{document}
+
+\begin{figure}
+\centering
+
+% (a) NESM horizontal slice
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../nesm_2019_2020_vort_vlevel_-4000_nt_3118.pdf}
+\end{subfigure}
+% (b) SM1 horizontal slice
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../nesm_2019_2020_5km_vort_vlevel_-4000_nt_3118.pdf}
+\end{subfigure}
+%
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../sm3_2019_2020_vort_vlevel_-4000_nt_3118.pdf}
+\end{subfigure}
+
+\vspace{1em}
+
+% (c) NESM vertical slice
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../nesm_2019_2020_vort_vslice_lat_38.4999_nt_3118.pdf}
+\end{subfigure}
+% (c) NESM vertical slice
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../nesm_2019_2020_5km_vort_vslice_lat_38.5006_nt_3118.pdf}
+\end{subfigure}
+% (d) SM1 vertical slice
+\begin{subfigure}[t]{0.32\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../sm3_2019_2020_vort_vslice_lat_38.4999_nt_3118.pdf}
+\end{subfigure}
+
+\end{figure}
+
+\end{document}

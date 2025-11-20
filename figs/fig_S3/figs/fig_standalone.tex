@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\captionsetup[subfigure]{labelformat=parens, labelsep=space, font=small}
+
+\begin{document}
+\begin{figure}
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \raisebox{0.005mm}{\includegraphics[width=\linewidth]{nesm_1km_all_tracks.png}}
+	\vspace{0.005mm}
+        \caption{NESM (1km)}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\linewidth]{nesm_5km_all_tracks.png}
+        \vspace{0.005mm}
+        \caption{NESM (5km)}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[width=\linewidth]{sm3_1km_all_tracks.png}
+	\vspace{0.005mm}
+        \caption{SM3 (1km)}
+    \end{subfigure}
+\end{figure}
+\end{document}

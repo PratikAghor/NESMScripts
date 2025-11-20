@@ -1,0 +1,68 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+
+\begin{document}
+
+\begin{figure}
+\centering
+% Row 1
+\begin{subfigure}[t]{0.245\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_1km_avg_ke_t_hslice_vlevel_-500_nt_2912_3023.png}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.245\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_1km_avg_ke_t_hslice_vlevel_-4000_nt_2912_3023.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.225\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_1km_avg_ke_vslice_lat_38.50_nt_2912_3023.png}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.225\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_1km_avg_ke_vslice_lon_-63.15_nt_2912_3023.png}
+\end{subfigure}
+
+\vspace{0.5cm}
+
+% Row 2
+\begin{subfigure}[t]{0.245\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_5km_avg_ke_t_hslice_vlevel_-500_nt_2912_3023.png}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.245\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_5km_avg_ke_t_hslice_vlevel_-4000_nt_2912_3023.png}
+\end{subfigure}
+\begin{subfigure}[t]{0.225\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_5km_avg_ke_vslice_lat_38.50_nt_2912_3023.png}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.225\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{../daily_avg_speed_hslice/nesm_5km_avg_ke_vslice_lon_-63.14_nt_2912_3023.png}
+\end{subfigure}
+
+% Row 3
+\begin{subfigure}[t]{0.52\textwidth}
+    \centering
+    \adjustbox{valign=t}{\includegraphics[width=\textwidth]{../box_ke_timeseries_comparison.png}}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.47\textwidth}
+    \centering
+    \adjustbox{valign=t}{\includegraphics[width=\textwidth]{../box_ke_grouped_barplot_depths_comparison.png}}
+\end{subfigure}
+
+\vspace{0.5cm}
+
+
+\end{figure}
+
+\end{document}

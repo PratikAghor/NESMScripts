@@ -1,0 +1,29 @@
+#!/bin/bash
+#SBATCH -JNESM_2019_2020_5km
+#SBATCH -A gts-abracco3-fy20phase1
+#SBATCH -N 8 --ntasks-per-node=8
+#SBATCH --mem=192G
+#SBATCH -oReport-%j.out                  # Combined output and error messages file
+#SBATCH -t36:00:00
+#SBATCH --mail-user=paghor3@gatech.edu
+#SBATCH --mail-type=BEGIN,END,FAIL
+
+# module purge
+# source ~/.pacemodules_ROMS
+# module list
+
+# Change into working directory
+# WORKDIR=/storage/home/hcoda1/9/paghor3/scratch/work/SEAMOUNT_2019_2020/compile
+WORKDIR=./
+cd $WORKDIR
+
+BIN=${WORKDIR}/croco
+echo ${BIN}
+INPUT=${WORKDIR}/croco.in
+logfile='job_NESM_2019_2020.log'
+
+# export LD_LIBRARY_PATH=/usr/local/pace-apps/spack/packages/linux-rhel7-x86_64/gcc-10.3.0/mvapich2-2.3.6-ouywalrqjnakjlhjxgunwqssb3iongrc/lib:/usr/local/pace-apps/spack/packages/linux-rhel7-x86_64/gcc-10.3.0/netcdf-c-4.8.1-qbpmsrxilalurws7acutvesy4h5yyzxy/lib:$LD_LIBRARY_PATH
+
+# srun -n 32 ./croco croco.in
+srun -u -v -n 64 ./croco croco.in
+# srun -u -v -n 64 ./croco croco_rst1.in

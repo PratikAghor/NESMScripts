@@ -1,0 +1,27 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\begin{figure}[H]
+    \centering
+   
+    % top row: 5 horizontal slices of kmke
+    \raisebox{-1em}{\includegraphics[width=0.33\textwidth]{../kmke_hslice/nesm_2019_2020_KmKe_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+    \raisebox{-0.00em}{\includegraphics[width=0.28\textwidth]{../kmke_hslice/nesm_2019_2020_5km_KmKe_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+    \raisebox{-0.15em}{\includegraphics[width=0.355\textwidth]{../kmke_hslice/sm3_2019_2020_KmKe_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+
+   % Bottom row: horizontal slices of vebf
+    \raisebox{-1em}{\includegraphics[width=0.33\textwidth]{../vebf_hslice/nesm_2019_2020_VEBF_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+    \raisebox{-0.00em}{\includegraphics[width=0.28\textwidth]{../vebf_hslice/nesm_2019_2020_5km_VEBF_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+    \raisebox{-0.15em}{\includegraphics[width=0.355\textwidth]{../vebf_hslice/sm3_2019_2020_VEBF_2d_hslice_nt_952_3877_vlevel_-4000.pdf}}\hfill
+
+\end{figure}
+
+\end{document}

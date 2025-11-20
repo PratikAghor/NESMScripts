@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{float}
+
+% \setlength{\abovecaptionskip}{0pt}
+% \setlength{\belowcaptionskip}{-5pt}
+\captionsetup{skip=2pt}
+
+\begin{document}
+
+\begin{figure}[!htbp]
+    \centering
+    \begin{subfigure}[b]{0.34\textwidth}
+       \includegraphics[width=\textwidth]{../nesm_2019_2020_pv_vlevel_-4000_nt_3090.png}
+       %\caption*{(a) }
+    \end{subfigure}
+    % (a) PV
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{../nesm_2019_2020_vort_vlevel_-4000_nt_3090.png}
+        % \caption*{(a) }
+    \end{subfigure}
+    % (b) Vorticity
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{../nesm_2019_2020_kv_vlevel_-4000_nt_3090.png}
+        % \caption*{(b) }
+    \end{subfigure} \\
+    \hfill
+    \begin{subfigure}[b]{0.34\textwidth}
+        \includegraphics[width=\textwidth]{../nesm_2019_2020_pv_t_vslice_lon_-63.1493_nt_3090.png}
+        % \caption*{(c) }
+    \end{subfigure}
+%
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{../nesm_2019_2020_vort_t_vslice_lon_-63.1493_nt_3090.png}
+        % \caption*{(c) }
+    \end{subfigure}
+%
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{../nesm_2019_2020_kv_vslice_lon_-63.1493_nt_3090.png}
+        % \caption*{(c) }
+    \end{subfigure}
+    %\caption{Vertical slices at longitude $63.0095^\circ$W and $t = 3088$: (a) Ertel PV, (b) Vorticity $\zeta/f$, (c) Vertical diffusivity $K_v$.}
+    \label{fig:tight_panel}
+\end{figure}
+
+\end{document}
