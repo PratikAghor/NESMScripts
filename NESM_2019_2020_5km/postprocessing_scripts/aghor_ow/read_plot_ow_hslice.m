@@ -65,8 +65,6 @@ f0 = 0.909*1e-4; % Coriolis freq
 %--------------------------------------------------------
 
 %-------------------------------------------------------
-% mkdir vort_plots;
-%% plotting
 for nt = 2135:tskip:2140
     sprintf('for loop indx = %d', nt)
     ow_t_nt = indxRange(1) - nt0 + nt;
@@ -93,31 +91,12 @@ for nt = 2135:tskip:2140
         zMax = 0.5; % max(max(vort));
         h1 = m_image(lon_rho_vec, lat_rho_vec, ow);
         colormap(cmocean('curl')); colorbar; clim([zMin zMax]);
-        % colormap(ax1,b2r(zMin,zMax));  colorbar;
-        % colormap(ax1, "jet"); clim([zMin zMax]); colorbar;
-        % colormap(ax1, whitejet); clim([zMin zMax]); colorbar;
-        % freezeColors; hold on;
-       
         xyskip = 15;
-        % m_quiver(lon_rho(1:xyskip:end, 1:xyskip:end), lat_rho(1:xyskip:end, 1:xyskip:end), ...
-        %  u_hslice(1:xyskip:end, 1:xyskip:end), v_hslice(1:xyskip:end, 1:xyskip:end), ...
-        %  'color',[0 0 0]);
 
         hold on;
-        % add a reference arrow using m_vec
-        % [hpv5, htv5] = m_vec(100, -62, 40.25, 20, 0, 'k', 'key', '0.2 m/s');
-        % [hpv5, htv5] = m_vec(100, -61.5, 37.4, 20, 0, 'k', 'key', '0.2 m/s');
-        % set(htv5,'FontSize',16);
-        
-        % [h2, c2] = m_contourf(lon_rho, lat_rho, -depth, [-3000 -3000], ...
-        %     'LineWidth', 3, 'EdgeColor', [0 0 0], 'FaceColor', [1 1 1], 'FaceAlpha', 0);
         [h2, c2] = m_contourf(lon_rho, lat_rho, -depth, [vlevel vlevel], ...
             'LineWidth', 3, 'EdgeColor', [0 0 0], 'FaceColor', [1 1 1], 'FaceAlpha', 0);
-        % c2.FaceColor = [1 1 1]; c2.FaceAlpha = 0.3; % opacity
-        % c2.EdgeColor = [0 0 0];
-        % [h2, c2] = m_contour(lon_rho, lat_rho, -depth, [-3000 -3000], ...
-        %        'LineWidth', 3, 'LineColor', [0 0 0]);
-        
+
         m_grid('tickdir','in', ...
        'xtick',([-64.99, -64 -63 -62 -61]),...  % longitude   
        'xticklabel',{'65°W', '64°W','63°W','62°W','61°W'}, ... % name longitude ticks as you want
@@ -139,8 +118,6 @@ for nt = 2135:tskip:2140
         date = char(string(datetime(2017, 12, 31, 23, 29, t_arr(ow_t_nt))));
         date = date(1:11);
         title(ax1, string(date));
-        % ax1.TitleHorizontalAlignment = 'center'; % left makes it come to center
-    %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         figname  = [plots_path, 'ow_plots/hslice/nesm_2019_2020_5km_ow'];
         
@@ -148,8 +125,6 @@ for nt = 2135:tskip:2140
         figname = strcat(figname, '_nt_', string(indxRange(1) + nt - 1));
         figname = strcat(figname, '.pdf');
         exportgraphics(figure1, figname, 'ContentType', 'vector'); % remove extra white space, 2022a and above
-        % 
-        % exportgraphics(figure1,strcat(figname, '.eps'))
         close all;
 end
 % 

@@ -47,8 +47,7 @@ else
     Z = zr_const_lat_1km;
 end
 
-% mkdir vort_plots;
-%% plotting
+%%
 for nt = Nt-1:Nt-1
     sprintf('for loop indx = %d', nt)
     vort_t_nt = indxRange(1) - nt0 + nt;
@@ -68,9 +67,8 @@ for nt = Nt-1:Nt-1
             'FontSize',24);
         hold on;
         vort_vslice = squeeze(vort_t_vslice(vort_t_nt, :, i, :));
-        zMin = -0.5; % min(min(vort_vslice)); 
-        zMax = -zMin; % max(max(~isinf(w_vslice)));
-        % h1 = image(lon_rho_vec, z_depth_vec, w_vslice);
+        zMin = -0.5;  
+        zMax = -zMin; 
         pcolor(ax1, X, Z, (vort_vslice)./f0); 
         shading interp;
         set(ax1,'Color', [1 1 1])
@@ -92,13 +90,11 @@ for nt = Nt-1:Nt-1
         ylabel('Depth($\times 10^3$ m)', 'Interpreter', 'latex'); 
         ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         ylim(ax1, [-5500 0])
-    %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         figname  = [plots_path, './', config, '_vort_vslice'];
         
         figname = strcat(figname, '_lat_', string(lat_arr(i)));
         figname = strcat(figname, '_nt_', string(indxRange(1) + nt - 1));
-        % vort_contour = strcat(vort_contour, '.pdf');
         exportgraphics(figure1, strcat(figname, '.pdf'), 'ContentType', 'vector'); % remove extra white space, 2022a and above
         % 
         close all;

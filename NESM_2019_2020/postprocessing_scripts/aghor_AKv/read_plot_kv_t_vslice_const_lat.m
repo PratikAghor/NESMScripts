@@ -38,13 +38,7 @@ Kmax = 5e-3;
 sec = 'nozoom' % zoom or nozoom
 %%
 %-------------------------------------------------------
-% only to get the dates in the title!
 %-------------------------------------------------------
-
-% mkdir vort_plots;
-%%
-% 
-%% plotting
 for nt = 1:Nt
     vort_t_nt = indxRange(nt) - nt0 + 1;
     for i = 1:1 %length(lat_arr)
@@ -70,7 +64,6 @@ for nt = 1:Nt
         cmin = 1e-5; % min(min(epv)); 
         cmax = 1e-3; % max(max(~isinf(w_vslice)));
         % h1 = image(lon_rho_vec, z_depth_vec, w_vslice);
-        % pcolor(ax1, Y(2:end-1, 2:end-1), Z(2:end-1, 2:end-1), epv_vslice(2:end-1, 2:end-1));
         pcolor(ax1, X, Z, kv_vslice); 
         shading interp;
         % freezeColors; hold on;
@@ -87,20 +80,9 @@ for nt = 1:Nt
         date = char(string(datetime(2017, 12, 31, 23, 29, t_arr(vort_t_nt))));
         date = date(1:11);
         title(ax1, date);
-        % ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         
         hold on;
-        % Z = -flip(squeeze(zr(lat_idx,:,:)), 1);
-        % LevelList1 = linspace(min(min(rho_vslice)), 36.49, 10);
-        % LevelList2 = linspace(36.49, 36.8, 5);
-        % LevelList3 = linspace(36.8, max(max(rho_vslice)), 10);
-        % 
-        % LevelList = [LevelList1, LevelList2, LevelList3];
-        % contour(ax1, X, (Z), (rho_vslice), ...
-        %     'EdgeColor', [0 0 0], 'LevelList', LevelList);
-    
-    
-        % visual check for Symmetric instability (SI)
+        % visual check for instability
         if (strcmp(sec, 'zoom')==true)
             xlim([-63.5, -62.9]);
             ylim([-5000, -4000]);
@@ -108,12 +90,11 @@ for nt = 1:Nt
             % xlim([-64., -61.]);
             ylim([-5000, 0]);
         end
-        xticks([-64.99 -64 -63 -62 -61])  % longitude   
-        xticklabels({'65°W', '64°W','63°W','62°W','61°W'}) % name longitude ticks as you want
-        yticks([-5000 -4000 -3000 -2000 -1000])  % height from surface in m   
-        yticklabels({'5000', '4000', '3000', '2000', '1000'}) % name y ticks as you want
+        xticks([-64.99 -64 -63 -62 -61]) 
+        xticklabels({'65°W', '64°W','63°W','62°W','61°W'}) 
+        yticks([-5000 -4000 -3000 -2000 -1000]) 
+        yticklabels({'5000', '4000', '3000', '2000', '1000'})
         axis square
-        % ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         if (strcmp(sec, 'zoom')==true)
@@ -126,11 +107,6 @@ for nt = 1:Nt
         figname = strcat(figname, '_nt_', string(indxRange(nt)));
         % vort_contour = strcat(vort_contour, '.pdf');
         exportgraphics(figure1, strcat(figname, '.pdf'), 'ContentType', 'vector'); % remove extra white space, 2022a and above
-        % 
-        % set(figure1, 'PaperPositionMode', 'auto')
-        % print(figure1,strcat(figname, '.png'),'-dpng','-r300');
-        % exportgraphics(figure1, strcat(figname, '.eps'), 'Resolution',300); % remove extra white space, 2022a and above
-        % export_fig(ax1, figname, '-eps','-transparent', '-r300'); % 
         close all;
     end
 end

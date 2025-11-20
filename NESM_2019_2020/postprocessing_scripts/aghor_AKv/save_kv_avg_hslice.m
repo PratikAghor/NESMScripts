@@ -7,19 +7,16 @@ start_paths
 type='r'; % see get_hslice
 % tindex=1; 
 %-------------------------------------------------------
-%%Loop to calculate averages if need (modify as needed)
-indxRange = 952:3877; % What time indices do you need?
+indxRange = 952:3877; 
 % indxRange = 3024:3151; % Jan 15 - Jan 30, 2020
 init = 0; %Index of first time period
 % Aghor's script
 [~, Nt] = size(indxRange);
-hke_arr = zeros(Nt, NumLayers); % get avg w as a function of height and time
 t_arr = zeros(Nt, 1);
 
 %% plot options
 vlevel_skip = 25;
 legendCell = [];
-% vlevel_arr = ([100, 52, 39, 15, 1]);% NumLayers: -vlevel_skip: 1
 vlevel = -4000; % vlevel < 0 => depth;
 Nz = 1; % length(vlevel_arr);
 kv_avg_hslice = zeros(Ny, Nx);

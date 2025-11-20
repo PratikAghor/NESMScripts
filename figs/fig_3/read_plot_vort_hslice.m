@@ -19,7 +19,6 @@ uv_nt0=uv_indxRange(1);
 [~, Nt] = size(indxRange);
 [~, uv_Nt] = size(uv_indxRange);
 
-ke_arr = zeros(Nt, N); % get ke at each time at different depths
 time_arr = zeros(Nt, 1);
 %--------------------------------------------------------
 tskip = 1;
@@ -71,14 +70,12 @@ end
 %--------------------------------------------------------
 
 %-------------------------------------------------------
-% mkdir vort_plots;
-%% 
 for nt = Nt-1:Nt-1
     sprintf('for loop indx = %d', nt)
     vort_t_nt = indxRange(1) - nt0 + nt;
     sprintf('vort_t arr indx = %d', vort_t_nt)
     sprintf('fig indx = %d', vort_t_nt + nt0 - 1)
-        %%% plotting
+        %%
         figure1 = figure(nt);
         [latlim, lonlim] = geoquadline(lat_rho, lon_rho);
         % Create axes
@@ -147,8 +144,6 @@ for nt = Nt-1:Nt-1
         date = char(string(datetime(2017, 12, 31, 23, 29, t_arr(vort_t_nt))));
         date = date(1:11);
         title(ax1, string(date));
-        % ax1.TitleHorizontalAlignment = 'center'; % left makes it come to center
-    %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         figname  = [plots_path, './', config, '_vort'];
         

@@ -63,9 +63,6 @@ latsec = lat_rho_vec;
 %--------------------------------------------------------
 
 %-------------------------------------------------------
-% mkdir vort_plots;
-%% plotting
-    %%% plotting
     figure1 = figure(1);
     % [latlim, lonlim] = geoquadline(lat_rho, lon_rho);
     % Create axes

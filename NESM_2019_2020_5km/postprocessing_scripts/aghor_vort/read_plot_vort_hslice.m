@@ -4,9 +4,6 @@ start_paths
 
 %-------------------------------------------------------
 %%
-%%Loop to calculate averages if need (modify as needed)
-% indxRange = 0:1690; % What time indices do you need?
-
 % indxRange = 952:3877; % entire year
 % indxRange=2032:2160; % Sep 13 - Sep 27, 2019
 indxRange=2232:2240; % Oct 08, 2019
@@ -24,7 +21,6 @@ uv_nt0=uv_indxRange(1);
 [~, Nt] = size(indxRange);
 [~, uv_Nt] = size(uv_indxRange);
 
-ke_arr = zeros(Nt, NumLayers); % get ke at each time at different depths
 time_arr = zeros(Nt, 1);
 %--------------------------------------------------------
 tskip = 1;
@@ -48,7 +44,6 @@ f0 = 0.909*1e-4; % Coriolis freq
 %-------------------------------------------------------
 %--------------------------------------------------------------------------
 % vertical line profiles at const lat-lon vs z
-% lat_idx_arr = ([90, 111, 135]);
 lat_idx_arr = ([23]);
 
 lat_arr = zeros(length(lat_idx_arr), 1); % const lat values to save vslice at
@@ -56,7 +51,6 @@ for i = 1:length(lat_idx_arr)
         lat_arr(i) = lat_rho_vec(lat_idx_arr(i), 1);
 end
 %--------------------------------------------------------------------------
-% lon_idx_arr = ([150, 158, 166, 172]);
 lon_idx_arr = ([35]);
 lon_arr = zeros(length(lon_idx_arr), 1);
 for j = 1:length(lon_idx_arr)
@@ -66,8 +60,6 @@ latsec = lat_rho_vec;
 %--------------------------------------------------------
 
 %-------------------------------------------------------
-% mkdir vort_plots;
-%% plotting
 for nt = 1:tskip:Nt
     sprintf('for loop indx = %d', nt)
     vort_t_nt = indxRange(1) - nt0 + nt;
@@ -110,14 +102,8 @@ for nt = 1:tskip:Nt
         % [hpv5, htv5] = m_vec(100, -61.5, 37.4, 20, 0, 'k', 'key', '0.2 m/s');
         set(htv5,'FontSize',16);
         
-        % [h2, c2] = m_contourf(lon_rho, lat_rho, -depth, [-3000 -3000], ...
-        %     'LineWidth', 3, 'EdgeColor', [0 0 0], 'FaceColor', [1 1 1], 'FaceAlpha', 0);
         [h2, c2] = m_contourf(lon_rho, lat_rho, -depth, [vlevel vlevel], ...
             'LineWidth', 3, 'EdgeColor', [0 0 0], 'FaceColor', [1 1 1], 'FaceAlpha', 0);
-        % c2.FaceColor = [1 1 1]; c2.FaceAlpha = 0.3; % opacity
-        % c2.EdgeColor = [0 0 0];
-        % [h2, c2] = m_contour(lon_rho, lat_rho, -depth, [-3000 -3000], ...
-        %        'LineWidth', 3, 'LineColor', [0 0 0]);
         
         m_grid('tickdir','in', ...
        'xtick',([-64.99, -64 -63 -62 -61]),...  % longitude   
@@ -140,8 +126,6 @@ for nt = 1:tskip:Nt
         date = char(string(datetime(2017, 12, 31, 23, 29, t_arr(vort_t_nt))));
         date = date(1:11);
         title(ax1, string(date));
-        % ax1.TitleHorizontalAlignment = 'center'; % left makes it come to center
-    %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         figname  = [plots_path, 'vort_plots/hslice/nesm_2019_2020_5km_vort'];
         
@@ -149,8 +133,6 @@ for nt = 1:tskip:Nt
         figname = strcat(figname, '_nt_', string(indxRange(1) + nt - 1));
         figname = strcat(figname, '.pdf');
         exportgraphics(figure1, figname, 'ContentType', 'vector'); % remove extra white space, 2022a and above
-        % 
-        % exportgraphics(figure1,strcat(figname, '.eps'))
         close all;
 end
 % 

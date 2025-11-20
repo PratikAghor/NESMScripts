@@ -2,10 +2,6 @@
 %%
 start_paths
 %-------------------------------------------------------
-% Omega = 7.2921e-5; % rotation rate of Earth s^-1
-% N = 1e-3; % Brunt-Vaisala frequency (order of magnitude, s^-1)
-
-%%Loop to calculate averages if need (modify as needed)
 % indxRange = 952:3877; % 
 % indxRange = 3088:3095; % Jan 23, 2020
 indxRange = 3024:3151; % Jan 15-30, 2020
@@ -17,11 +13,10 @@ rho_nt0 = rho_indxRange(1);
 [~, rho_Nt] = size(rho_indxRange);
 
 % Aghor's script
-% get avg ke as a function of height and temperature
 [~, Nt] = size(indxRange);
 time_arr = zeros(Nt, 1);
 Kb = 1e-5; % background diffusivity
-Kmax = 5e-3;
+% Kmax = 5e-3;
 
 %-------------------------------------------------------
 sec = 'nozoom' % zoom or nozoom
@@ -34,21 +29,10 @@ t_arr = ncread(filename, 'time');
 lon_idx_arr = ncread(filename, 'lon_idx_arr');
 lon_arr = ncread(filename, 'lon_arr');
 kv_t_vslice = ncread(filename, 'kv_t_vslice_const_lon');
-% rho_pot_t_vslice = ncread(rho_pot_t_filename, 'rho_t_vslice');
-
-% avg_pv_vslice = zeros(Ny, length(lon_arr), NumLayers);
 %%
 %-------------------------------------------------------
 
 %%
-
-% avg_pv_vslice = avg_pv_vslice./Nt;
-% 
-%% plotting
-% f0 = 2*Omega*sin(lat_rho_vec(Ny/2, 1)); % avg Coriolis freq.
-
-% z_depth_vec = squeeze(zr(1, lon_idx, :)); % get depth vals at that lat
-%%% plotting
 for nt = 1:Nt
     vort_t_nt = indxRange(nt) - nt0 + 1;
 
@@ -93,19 +77,6 @@ for nt = 1:Nt
         date = date(1:11);
         title(ax1, strcat('$$(k_{v}) \quad$$', date), 'interpreter','latex');
         hold on;
-        % Z = -flip(squeeze(zr(lat_idx,:,:)), 1);
-        % LevelList1 = linspace(min(min(rho_vslice)), 36.49, 10);
-        % LevelList2 = linspace(36.49, 36.8, 5);
-        % LevelList3 = linspace(36.8, max(max(rho_vslice)), 10);
-        % 
-        % LevelList = [LevelList1, LevelList2, LevelList3];
-        % contour(ax1, Y, (Z), (rho_vslice), ...
-        %     'EdgeColor', [0 0 0], 'LevelList', LevelList);
-        % 
-        % xlim([38.5, 39.5]);
-        % ylim([-5000, -1500]);
-        % title(ax1, string(datetime(2017,12,31,0,0,t_arr(vort_t_nt))));
-        % ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         
         % bathy
         plot(ax1, lat_rho_vec, squeeze(Z(1, :)), 'k-', 'LineWidth', 3);
@@ -118,15 +89,13 @@ for nt = 1:Nt
             % xlim([latlim]);
             ylim(ax1, [-5500, 0]);
         end
-        % ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         %%%
         % 
-        xticks([38 39 39.99])  % longitude   
-        xticklabels({'38°N', '39°N','40°N'}) % name longitude ticks as you want
-        yticks([-5000 -4000 -3000 -2000 -1000])  % height from surface in m   
+        xticks([38 39 39.99]) 
+        xticklabels({'38°N', '39°N','40°N'}) 
+        yticks([-5000 -4000 -3000 -2000 -1000])     
         yticklabels({'5','4','3','2','1','0'});
         ylabel('Depth($\times 10^3$ m)', 'Interpreter', 'latex');
-        % ax1.TitleHorizontalAlignment = 'left'; % left makes it come to center
         %%%
         set(figure1, 'Visible', 'off'); % stop pop-ups
         if (strcmp(sec, 'zoom')==true)
@@ -137,7 +106,6 @@ for nt = 1:Nt
         % 
         figname = strcat(figname, '_lon_', string(lon_arr(j)));
         figname = strcat(figname, '_nt_', string(indxRange(nt)));
-        % exportgraphics(figure1, strcat(figname, '.pdf'), 'ContentType', 'vector'); % remove extra white space, 2022a and above
         % 
         exportgraphics(figure1, strcat(figname, '.png')); % remove extra white space, 2022a and above
 
