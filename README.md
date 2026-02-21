@@ -4,7 +4,7 @@
 
 ### Steps to configure simulations and postprocess output
 
-#### `blk_bry_data`: download bulk and boundary data from HYCOM and NAVGEM:
+#### Download bulk and boundary data from HYCOM and NAVGEM: `blk_bry_data`
 * In directory `blk_bry_data/HYCOM`, use `gethycom_varname.sbatch` to download the individual HYCOM files,
 * Then use `blk_bry_data/merged/merge_hycom_data.sbatch` to consolidate individual HYCOM ncfiles into one file per variable
 * For NAVGEM data, follow instructions in the README file at `blk_bry_data/NAVGEM`.
@@ -13,7 +13,7 @@
 #### Location of Gridfiles
 * Gridfile for NESM (1 km) run: `NESM_2019_2020/data/edit_grid/NESM_grd.nc`. 
 * Gridfile for NESM (5 km) run: `NESM_2019_2020_5km/data/edit_grid/NESM_grd_5km.nc`. 
-* Gridfile for NESM (1 km) run: `SM3_2019_2020/data/edit_grid/SM3_grd.nc`.
+* Gridfile for SM3 (1 km) run: `SM3_2019_2020/data/edit_grid/SM3_grd.nc`.
 * Note that these gridfiles must be copied to the `forcing` directory before running the simulations.
 * Create a directory to store forcings `mkdir forcing`.
 * Copy gridfiles from `data/edit_grid/` to the `forcing` directory.
@@ -41,12 +41,12 @@
 #### Postprocessing: `postprocessing_scripts` and `figs`
 * Once the `data/output` is generated, use matlab scripts in `postprocessing_scripts` to postprocess the data.
 * Adjust paths everywhere is mostly `start_paths.m` according to your system. 
-* `postprocessing_scripts/aghor_Akt`: Contains scripts related to $k_v$ calculations. 
+* `postprocessing_scripts/aghor_Akt`: Contains scripts related to vertical diffusivity ($k_v$) calculations. 
 * `postprocessing_scripts/aghor_eke`: Contains scripts related to eddy kinetic energy (EKE) calculations.
 * `postprocessing_scripts/aghor_kmke`: Contains scripts related to KmKe calculations.
 * `postprocessing_scripts/aghor_ow`: Contains scripts related to Okubo-Weiss calculations.
-* `postprocessing_scripts/aghor_pv`: Contains scripts related to Ertel potential vorticity calculations.
+* `postprocessing_scripts/aghor_pv`: Contains scripts related to Ertel potential vorticity ($q$) calculations.
 * `postprocessing_scripts/aghor_vebf`: Contains scripts related to VEBF (vertical eddy buoyancy flux) calculations.
-* `postprocessing_scripts/aghor_vot`: Contains scripts related to relative vorticity calculations.
+* `postprocessing_scripts/aghor_vot`: Contains scripts related to relative vorticity ($\zeta$) calculations.
 * `postprocessing_scripts/aghor_w`: Contains scripts related to vertical velocity (w) calculations.  
 * Finally, `figs` directory contains scripts and data to generate figures in the manuscript.     
