@@ -6,13 +6,9 @@ function plot_vebf_hslice(case_name, vlevel, plots_path, lon_min, lon_max, lat_m
 % Plot horizontal slice of VEBF with velocity arrows at a given depth.
 % Inputs: same as plot_KmKe_hslice but for VEBF
 %--------------------------------------------------------------------------
-close all
+close all; 
 %--------------------------------------------------------------------------
 %--------------------------------------------------------------------------
-aghor_extras_path = '../../../aghor_extras/';
-addpath(fullfile(aghor_extras_path, 'export_fig'));
-addpath(fullfile(aghor_extras_path, 'm_map'));
-addpath(fullfile(aghor_extras_path, 'cmap_manual'));
 %--------------------------------------------------------------------------
 indxRange = 952:3877;
 box = box;
@@ -56,8 +52,12 @@ cMin = -cMax;
 [lon_mesh, lat_mesh] = meshgrid(lon_rho_vec, lat_rho_vec);
 m_pcolor(lon_mesh, lat_mesh, VEBF2D);
 shading interp;
-colormap(cmocean('curl'));
 clim([cMin cMax]);
+
+% colormap(cmocean('curl'));
+% colormap(cmocean('tarn'));
+colormap(centered('PuOr'));
+
 axis tight
 
 if cbar

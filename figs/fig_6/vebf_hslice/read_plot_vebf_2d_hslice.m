@@ -1,12 +1,18 @@
 %-------------------------------------------------------
 % use plot_vebf_hslice function to plot vebf_hslices
 %-------------------------------------------------------
+aghor_extras_path = '/media/aghor/aghor/prometheus_backup/Aghor/GT/GT_project/aghor_extras/';
+addpath(genpath(fullfile(aghor_extras_path, 'export_fig')));
+addpath(genpath(fullfile(aghor_extras_path, 'm_map')));
+addpath(genpath(fullfile(aghor_extras_path, 'cmap_manual')));
+addpath(genpath(fullfile(aghor_extras_path, 'cmap_manual/centered-colormap/')));
+%-------------------------------------------------------
 % Common params
 plots_path = './';
 vlevel = -4000;
 lon_min = -64.5; lon_max = -62.8;
 lat_min = 38; lat_max = 39.5;
-cMax = 1e-7;
+cMax = 3e-7;
 %-------------------------------------------------------
 % NESM 1km
 cbar = false; ref_arrow = false;
