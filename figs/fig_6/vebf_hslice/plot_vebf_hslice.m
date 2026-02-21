@@ -57,6 +57,15 @@ clim([cMin cMax]);
 % colormap(cmocean('curl'));
 % colormap(cmocean('tarn'));
 colormap(centered('PuOr'));
+%-------
+% to make things colorblind-friendly, I am adding conours on the positive
+% side
+hold on;
+[cs, h] = m_contour(lon_mesh, lat_mesh, VEBF2D, [5e-8, 1e-7, 2e-7], 'k-', 'LineWidth', 1.);
+% if ~isempty(cs)
+%     clabel(cs, h, 'FontSize', 9, 'Color', 'k', 'LabelSpacing', 400);
+% end
+%-------
 
 axis tight
 
