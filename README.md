@@ -40,7 +40,7 @@
 
 #### Postprocessing: `postprocessing_scripts` and `figs`
 * Once the `data/output` is generated, use matlab scripts in `postprocessing_scripts` to postprocess the data.
-* Adjust paths everywhere is mostly `start_paths.m` according to your system. 
+* Adjust paths everywhere in mostly `start_paths.m` according to your system. 
 * `postprocessing_scripts/aghor_Akt`: Contains scripts related to vertical diffusivity ($k_v$) calculations. 
 * `postprocessing_scripts/aghor_eke`: Contains scripts related to eddy kinetic energy (EKE) calculations.
 * `postprocessing_scripts/aghor_kmke`: Contains scripts related to KmKe calculations.
