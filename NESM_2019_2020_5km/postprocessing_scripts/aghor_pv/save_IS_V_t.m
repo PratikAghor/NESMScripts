@@ -7,20 +7,23 @@ start_paths
 type='r'; % see get_hslice
 % tindex=1; 
 %-------------------------------------------------------
-indxRange = 952:3877; % entire year
+%%Loop to calculate averages if need (modify as needed)
+indxRange = 952:3877; % What time indices do you need?
 
 % z lims, z1 < z2
 z1 = -4000;
 z2 = -1000; % -500;
 
 % Aghor's script
-q_thresh = 1e-9; % threshold for low PV [s^-3]
+% q_thresh = 1e-9; % threshold for low PV [s^-3]
+q_thresh = 1e-9; % check threshold sensitivity
+q_str = '1e-9'; % hardcoding q_str for filename
 
 Nt = numel(indxRange);
 
 t_arr = zeros(Nt, 1);
 fq = zeros(Nt,1); % fraction of volume with |q| < q_thresh;
-z_box_avg_pv_t = zeros(Nt,1); % V_q
+z_box_avg_pv_t = zeros(Nt,1); % <q>_V
 t_arr = zeros(Nt,1);
 IS_V = zeros(Nt, 1); % instability strength
 
@@ -74,8 +77,11 @@ end
 %----------------------------------------------------------------------------
 % save
 % save data into a netcdf file
-filename = sprintf('nesm_2019_2020_5km_IS_V_t_z1_%d_z2_%d_nt_%d_%d.nc', ...
-    z1, z2, indxRange(1), indxRange(Nt));
+% filename = sprintf('nesm_2019_2020_5km_IS_V_t_z1_%d_z2_%d_nt_%d_%d.nc', ...
+%    z1, z2, indxRange(1), indxRange(Nt));
+
+filename = sprintf('nesm_2019_2020_5km_IS_V_t_qthresh_%s_z1_%d_z2_%d_nt_%d_%d.nc', ...
+    q_str, z1, z2, indxRange(1), indxRange(Nt));
 
 ncid = netcdf.create(filename,'CLOBBER');
 t_len = netcdf.defDim(ncid, 'Nt', Nt);

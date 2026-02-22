@@ -34,7 +34,7 @@
 * Change paths accordingly in the `compile/croco.in` file for forcings to the appropriate `forcing` directory and also update paths for saving the output to the appropriate `data/output` directory. 
 * Update `param.h` if you need to configure the run with different number of processors, etc.
 * `cppdefs.h` contains details for numerical schemes, best not to update it to reproduce the same results. 
-* `./jobcomp > comp.log` to compile the run, it should generate a `coroco` executable. 
+* `./jobcomp > comp.log` to compile the run, it should generate a `croco` executable. 
 * Finally, use `sbatch job_*.sbatch` for running the simulation. 
 * Make sure that the data is being saved in the `data/output` directory correctly. 
 
